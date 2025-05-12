@@ -1,3 +1,2 @@
 # dsi202
-#hello world
-#test rename
+โปรเจ็ครายวิชาวิชา dsi202 

@@ -4,7 +4,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Camp, StudentProfile
 from .forms import CampForm, StudentProfileForm
 from django.contrib import messages
-
+from django.db.models import Q
+from django.utils import timezone
+from datetime import date
 
 def home(request):
     categories = {
@@ -24,8 +26,17 @@ def home(request):
             'camps': camps
         }
 
-    # We need to ensure application_deadline is a DateField in the model for proper sorting
-    close_soon_camps = Camp.objects.filter(approved=True).order_by('application_deadline')[:10]
+    
+    # ดึงค่ายที่ใกล้ปิดรับสมัคร
+    close_soon_camps = Camp.objects.filter(
+        approved=True,
+        application_deadline__isnull=False,
+        application_deadline__gte=date.today()
+    ).order_by('application_deadline')[:10]
+
+    # คำนวณวันเหลือ
+    for camp in close_soon_camps:
+        camp.days_left = (camp.application_deadline - date.today()).days
 
     return render(request, 'camps/home.html', {
         'camps_by_category': camps_by_category,
@@ -77,23 +88,55 @@ def complete_profile(request):
 
     return render(request, 'camps/complete_profile.html', {'form': form})
 
-login_required
+@login_required
 def profile(request):
-    try:
-        profile = request.user.student_profile
-    except StudentProfile.DoesNotExist:
-        return redirect('complete_profile')
-
+    profile, created = StudentProfile.objects.get_or_create(user=request.user)
+    camps = []
+    
+    if profile.hobbies or profile.interests:
+        # Combine hobbies and interests, split by commas, and strip whitespace
+        keywords = []
+        if profile.hobbies:
+            keywords.extend([h.strip() for h in profile.hobbies.split(',')])
+        if profile.interests:
+            keywords.extend([i.strip() for i in profile.interests.split(',')])
+        
+        # Map Thai category names to Camp model category values
+        category_mapping = {
+            'สุขภาพ': 'health',
+            'วิศวกรรม': 'engineering',
+            'ไอที': 'digital-it',
+            'ดิจิทัล': 'digital-it',
+            'สถาปัตยกรรม': 'architecture',
+            'ภาษา': 'language',
+            'จิตอาสา': 'volunteer',
+        }
+        
+        # Build query for matching categories
+        category_filters = Q()
+        for keyword in keywords:
+            for thai_category, model_category in category_mapping.items():
+                if thai_category in keyword:
+                    category_filters |= Q(category=model_category)
+        
+        # Query camps with matching categories, approved, and future deadlines
+        camps = Camp.objects.filter(
+            category_filters,
+            approved=True,
+            application_deadline__gte=timezone.now().date()
+        ).order_by('application_deadline')[:15]
+    
     if request.method == 'POST':
-        form = StudentProfileForm(request.POST, instance=profile)
+        form = StudentProfileForm(request.POST, instance=profile, user=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, 'อัปเดตข้อมูลโปรไฟล์เรียบร้อยแล้ว')
+            return redirect('profile')
     else:
-        form = StudentProfileForm(instance=profile)
-
+        form = StudentProfileForm(instance=profile, user=request.user)
+    
     return render(request, 'camps/profile.html', {
-        'form': form,
-        'email': request.user.email,
         'profile': profile,
+        'form': form,
+        'user': request.user,
+        'camps': camps,
     })

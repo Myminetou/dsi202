@@ -5,4 +5,4 @@ class CampsConfig(AppConfig):
     name = 'camps'
 
     def ready(self):
-        import myapp.signals
+        import camps.signals

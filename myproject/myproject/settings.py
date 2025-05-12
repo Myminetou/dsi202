@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+   
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -135,6 +135,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -146,7 +147,8 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'home'  # หน้าแรกหลังล็�
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_SIGNUP_REDIRECT_URL = 'complete_profile' # Redirect ไปหน้า profile หลัง sign up
 ACCOUNT_LOGIN_ON_SIGNUP = True
 ACCOUNT_USERNAME_REQUIRED = False
+
+
