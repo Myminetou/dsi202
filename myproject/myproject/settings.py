@@ -150,5 +150,3 @@ LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_SIGNUP_REDIRECT_URL = 'complete_profile' # Redirect ไปหน้า profile หลัง sign up
 ACCOUNT_LOGIN_ON_SIGNUP = True
 ACCOUNT_USERNAME_REQUIRED = False
-
-
