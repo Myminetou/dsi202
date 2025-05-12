@@ -2,7 +2,7 @@
 URL configuration for myproject project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -21,10 +21,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # ถ้ามีหน้าเว็บของ myapp ให้เพิ่มบรรทัดนี้ (ไม่จำเป็นถ้าแอปไม่มี view)
-    path('', include('myapp.urls')),
-]
-
-# ในโหมด DEBUG ให้ Django ให้บริการไฟล์ใน MEDIA_ROOT
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('accounts/', include('allauth.urls')),  # ตรวจสอบว่าแถวนี้มี
+    path('', include('camps.urls')),  # include camps.urls
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
