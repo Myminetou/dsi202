@@ -53,16 +53,17 @@
     &nbsp;&nbsp;&nbsp;&nbsp;1.2 กรอกข้อมูลกิจกรรมหรือค่ายที่ต้องการประชาสัมพันธ์  
     &nbsp;&nbsp;&nbsp;&nbsp;1.3 เมื่อกดยืนยันการเพิ่มค่าย ระบบจะถือว่าเสร็จสิ้น จากนั้นให้รอ Admin มาตรวจสอบ
 
-## ความต้องการเบื้องต้น
+## การติดตั้งและการใช้งาน
+### ความต้องการเบื้องต้น
 
 - ติดตั้ง [Docker](https://www.docker.com/)
 - ติดตั้ง [Git](https://git-scm.com/)
 
 ---
 
-## ขั้นตอนการติดตั้ง
+### ขั้นตอนการติดตั้ง
 
-1. โคลนโปรเจกต์จาก GitHub:
+1. clone โปรเจกต์จาก GitHub:
 
     ```bash
     git clone https://github.com/Myminetou/dsi202_2025.git
@@ -92,13 +93,13 @@
     docker compose build
     ```
 
-4. จากนั้นรันแอปพลิเคชัน:
+4. จากนั้นรัน Web Application:
 
     ```bash
     docker compose up
     ```
 
-5. เปิดเบราว์เซอร์แล้วไปที่:
+5. เปิด browser แล้วไปที่:
 
     [http://localhost:8000/](http://localhost:8000/)
 
