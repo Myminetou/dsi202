@@ -3,7 +3,6 @@
 {% block content %}
 <div class="min-h-screen flex items-center justify-center px-4">
     <div class="bg-white text-center p-8 rounded-xl shadow-md animate-fade-in inline-block">
-        <!-- Header Section -->
         <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-4">ขอบคุณสำหรับการโปรโมทค่าย!</h2>
         <p class="text-lg text-gray-700 mb-2">ค่ายของคุณกำลังอยู่ระหว่างการพิจารณาโดยทีมงาน</p>
         <p class="text-base text-gray-600 mb-4">
@@ -16,7 +15,6 @@
             <span id="countdown" class="font-semibold text-red-500 bg-red-100 px-2 py-1 rounded">15</span> วินาที
         </p>
 
-        <!-- Back to Home Button -->
         <a href="{% url 'home' %}" 
         class="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
                 text-white py-2 px-6 rounded-lg text-base font-medium
@@ -26,7 +24,6 @@
     </div>
 </div>
 
-<!-- Countdown Script -->
 <script>
     let seconds = 60;
     const countdown = document.getElementById("countdown");
@@ -41,7 +38,6 @@
     }, 1000);
 </script>
 
-<!-- Custom Animation -->
 <style>
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(8px); }

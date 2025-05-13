@@ -13,12 +13,9 @@
       background-color: #111827;
     }
   </style>
-  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Font Awesome integration (ensure it's included in base.html or here) */
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
-    /* Animated Background Circles */
     .background-circles {
       position: fixed;
       top: 0;
@@ -89,7 +86,6 @@
       100% { transform: translate(0, 0) scale(1); }
     }
 
-    /* Mobile Menu */
     #mobile-menu {
       transform: translateX(-100%);
       transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
@@ -110,7 +106,6 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    /* Header Styling */
     .mobile-header {
       background: rgba(255, 99, 99, 0.95);
       backdrop-filter: blur(10px);
@@ -123,7 +118,6 @@
       transform: scale(1.2);
     }
 
-    /* Category Navigation */
     .category-link {
       transition: all 0.3s ease;
     }
@@ -138,7 +132,6 @@
       transform: rotate(10deg) scale(1.1);
     }
 
-    /* Footer */
     footer {
       background: linear-gradient(135deg, #003049 0%, #002437 100%);
     }
@@ -151,7 +144,6 @@
   </style>
 </head>
 <body class="flex flex-col min-h-screen">
-  <!-- Animated Background -->
   <div class="background-circles">
     <div class="circle circle-1"></div>
     <div class="circle circle-2"></div>
@@ -161,7 +153,6 @@
   </div>
 
   <header>
-    <!-- Mobile Hamburger Navbar -->
     <div class="flex md:hidden bg-white bg-opacity-90 items-center justify-center p-4 mobile-header">
       <button id="hamburger-btn" class="p-2 absolute left-4 hamburger-icon">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -173,7 +164,6 @@
       </a>
     </div>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden fixed top-0 left-0 h-full w-64 shadow flex flex-col p-4 z-50">
       <button id="close-btn" class="self-end p-2 mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -200,7 +190,6 @@
       {% endif %}
     </div>
 
-    <!-- Desktop Navbar -->
     <div class="hidden md:flex bg-white shadow">
       <div class="container mx-auto flex justify-between items-center p-4">
         <a href="{% url 'home' %}">
@@ -229,7 +218,6 @@
       </div>
     </div>
 
-    <!-- Category Navigation -->
     <div class="bg-[#003049] text-white">
       <div class="w-full max-w-[100%] px-4 py-4">
         <div class="grid grid-cols-6 gap-6 w-full">
@@ -300,14 +288,12 @@
       mobileMenu.classList.remove('open');
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target) && mobileMenu.classList.contains('open')) {
         mobileMenu.classList.remove('open');
       }
     });
   </script>
-<!-- Vanta.js and Three.js CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 
@@ -334,8 +320,8 @@
     minWidth: 200.00,
     scale: 1.0,
     scaleMobile: 1.0,
-    color: 0x60a5fa,         // สีเส้น (ฟ้าอ่อน - tailwind blue-400)
-    backgroundColor: 0x111827, // พื้นหลังสีเข้ม (tailwind gray-900)
+    color: 0x60a5fa,         
+    backgroundColor: 0x111827, 
     points: 10.0,
     maxDistance: 20.0,
     spacing: 15.0

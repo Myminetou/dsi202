@@ -1,9 +1,7 @@
 {% extends 'camps/base.html' %}
 
 {% block content %}
-<!-- Interactive Net Background -->
 <div id="particles-js" class="fixed inset-0 -z-10"></div>
-
   <div class="mt-16">
   <h2 class="text-3xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-cyan-300 to-yellow-300 text-transparent bg-clip-text tracking-tight mb-12 animate-fade-in">
     Welcome to Peddle Camp<br>
@@ -16,17 +14,10 @@
 <div class="relative overflow-hidden mb-20 animate-fade-in">
   <div class="flex flex-col md:flex-row gap-8 items-center">
     <div class="w-full md:w-1/2 flex flex-col items-center">
-
-  <!-- ครอบข้อความ + GIF ด้วย div -->
   <div class="w-[100%] md:w-[80%]">
-
-    <!-- ข้อความ -->
     <p class="text-cyan-200 leading-loose drop-shadow-md bg-black/30 rounded-lg px-4 py-2">
       Peddle Camp คือสถานที่รวบรวมค่ายทุกประเภทให้ทุกคนสามารถมาค้นหาค่ายที่ตัวเองสนใจ ชื่นชอบ อีกทั้งโปรโมทค่ายได้อีกด้วย โดยพวกเรามองเห็นถึงปัญหาที่ว่า ค่ายอยู่อย่างกระจัดกระจายไม่รู้ว่ามีค่ายไหนที่ใกล้ปิดรับหรือเปิดรับอยู่บ้าง จึงได้เกิด Peddle Camp ขึ้นมา 
     </p>
-    
-
-    <!-- GIF -->
     <img src="https://media.giphy.com/media/zKbzfgqrvPzucTh5OX/giphy.gif" 
         alt="Technology GIF" 
         class="w-full aspect-video object-cover rounded-xl shadow-lg" />
@@ -34,29 +25,15 @@
 
 </div>
 
-
-
-
-
-
-    <!-- ✅ ฝั่งขวา: ค่ายที่ใกล้ปิด -->
     <div class="w-full md:w-1/2 relative">
-      <!-- หัวข้อ -->
-
       <h2 class="text-2xl md:text-2xl font-extrabold text-center bg-gradient-to-r from-orange-400 via-pink-500 to-red-600 text-transparent bg-clip-text tracking-tight drop-shadow-lg mb-6">
         ค่ายใกล้ปิดรับสมัคร! รับสมัครเลย!
       </h2>
-
-
-
-
-      <!-- แสดงทีละ 1 ค่าย -->
       <div id="carousel" class="w-full flex transition-transform duration-500 ease-in-out">
         {% for camp in close_soon_camps %}
           <div class="w-full flex-shrink-0 px-4">
             <a href="{% url 'camp_detail' camp.id %}" class="block bg-white border rounded-xl shadow-md hover:shadow-xl hover:scale-[1.015] transition-all duration-300 p-5 relative">
               
-              <!-- ป้ายแสดง "อีกกี่วัน" -->
               <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md shadow">
                 อีก {{ camp.days_left }} วัน
               </div>
@@ -75,7 +52,6 @@
         {% endfor %}
       </div>
 
-      <!-- ปุ่มเลื่อน -->
       <button onclick="prevSlide()" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 px-3 py-1 shadow rounded-full text-xl z-10">‹</button>
       <button onclick="nextSlide()" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 px-3 py-1 shadow rounded-full text-xl z-10">›</button>
 
@@ -84,7 +60,6 @@
   </div>
 </div>
 
-  <!-- Divider Section -->
 <div class="my-16 relative flex items-center justify-center">
   <div class="absolute w-full border-t border-gray-300"></div>
   <span class="bg-white px-4 text-gray-500 text-sm z-10"></span>
@@ -137,7 +112,7 @@
     #particles-js {
       width: 100%;
       height: 100%;
-      background-color: #0f172a; /* พื้นหลังเข้ม เท่ */
+      background-color: #0f172a; 
       z-index: -10;
     }
 
@@ -195,10 +170,7 @@
     });
     window.addEventListener('load', updateSlide);
   </script>
-  <!-- Particles.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
-<!-- Net Config -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 <script>
   
   particlesJS("particles-js", {

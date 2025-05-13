@@ -24,7 +24,6 @@
             </div>
         {% endfor %}
 
-        <!-- Checkbox for agreeing to rules -->
         <div class="flex items-center space-x-2">
             <input type="checkbox" id="agreeRules" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
             <label for="agreeRules" class="text-sm text-gray-700">
@@ -41,7 +40,6 @@
     </form>
 </div>
 
-<!-- Rules Popup -->
 <div id="rulesPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
     <div class="bg-white rounded-lg p-6 max-w-lg w-full">
         <h3 class="text-xl font-bold text-indigo-900 mb-4">กฎการโปรโมทกิจกรรม/ค่าย</h3>
@@ -55,7 +53,6 @@
     </div>
 </div>
 
-<!-- Confirmation Popup -->
 <div id="confirmPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
     <div class="bg-white rounded-lg p-6 max-w-md w-full">
         <h3 class="text-xl font-bold text-indigo-900 mb-4">ยืนยันการเพิ่มกิจกรรม/ค่าย</h3>
@@ -69,7 +66,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Image Preview
         const imageInput = document.getElementById('id_image');
         const imagePreview = document.getElementById('image-preview');
         if (imageInput && imagePreview) {
@@ -89,7 +85,6 @@
             });
         }
 
-        // Checkbox to enable submit button
         const agreeCheckbox = document.getElementById('agreeRules');
         const submitButton = document.getElementById('submitCamp');
         if (agreeCheckbox && submitButton) {
@@ -98,7 +93,6 @@
             });
         }
 
-        // Rules Popup
         const rulesPopup = document.getElementById('rulesPopup');
         const openRulesButton = document.getElementById('openRules');
         const closeRulesButton = document.getElementById('closeRules');
@@ -111,7 +105,6 @@
             });
         }
 
-        // Confirmation Popup
         const confirmPopup = document.getElementById('confirmPopup');
         const campForm = document.getElementById('campForm');
         const cancelConfirmButton = document.getElementById('cancelConfirm');

@@ -1,14 +1,11 @@
 {% extends 'camps/base.html' %}
 {% block content %}
 <div class="max-w-6xl mx-auto py-10 px-4">
-  <!-- หัวข้อ -->
   <h2 class="text-4xl text-center text-white mb-10 tracking-tight animate-fade-in">
     {{ camp.title }}
   </h2>
 
-  <!-- กล่องเนื้อหา -->
   <div class="bg-white shadow-lg rounded-2xl overflow-hidden gap-8 p-6 md:p-10">
-    <!-- รูปภาพ -->
     <div class="flex justify-center">
       {% if camp.image %}
         <img src="{{ camp.image.url }}" alt="Camp Image" class="w-full max-w-md h-auto rounded-xl shadow-md">
@@ -17,7 +14,6 @@
       {% endif %}
     </div>
 
-    <!-- ข้อมูล -->
   <div class="space-y-3 text-[16px] leading-relaxed pt-4">
   <div class="flex gap-2">
     <span class="flex text-indigo-600 text-sm flex-shrink-0">
@@ -75,18 +71,13 @@
     <p class="flex-1">{{ camp.application_deadline }}</p>
   </div>
 
-
-      <!-- ปุ่มแชร์ไปยังแอพต่างๆ -->
       <div class="flex justify-center gap-6 mt-8">
-        <!-- Facebook Share -->
         <a href="fb-messenger://share?link={{ request.build_absolute_uri|urlencode }}&app_id=YOUR_FB_APP_ID" data-web-url="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}" class="share-btn bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110" aria-label="Share on Facebook">
           <i class="fab fa-facebook-f text-xl"></i>
         </a>
-        <!-- Twitter Share -->
         <a href="twitter://post?message={{ camp.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" data-web-url="https://twitter.com/intent/tweet?text={{ camp.title|urlencode }}&url={{ request.build_absolute_uri|urlencode }}" class="share-btn bg-blue-400 hover:bg-blue-500 text-white p-3 rounded-full flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110" aria-label="Share on Twitter">
           <i class="fab fa-twitter text-xl"></i>
         </a>
-        <!-- Line Share -->
         <a href="line://msg/text/{{ camp.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" data-web-url="https://line.me/R/share?text={{ camp.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" class="share-btn bg-green-500 hover:bg-green-600 text-white p-3 rounded-full flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110" aria-label="Share on Line">
           <i class="fab fa-line text-xl"></i>
         </a>
@@ -94,7 +85,6 @@
     </div>
   </div>
 
-  <!-- ปุ่มลิงก์ -->
   <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10">
     <a href="https://forms.google.com" target="_blank"
   class="bg-gradient-to-r from-red-600 via-purple-600 to-blue-600 hover:brightness-110 text-white py-3 px-6 rounded-xl text-lg font-semibold shadow-md transition-transform duration-200 hover:scale-105">
@@ -123,14 +113,11 @@
     animation: fade-in 0.6s ease-out forwards;
   }
   
-
-  /* Ensure image fits nicely */
   img {
     max-height: 400px;
     object-fit: cover;
   }
 
-  /* Font Awesome integration */
   @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 </style>
 
@@ -140,23 +127,19 @@
 
     shareButtons.forEach(button => {
       button.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default navigation
+        e.preventDefault();
 
         const mobileUrl = button.getAttribute('href');
         const webUrl = button.getAttribute('data-web-url');
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-        // Try opening the app with the mobile deep link
         if (isMobile) {
           window.location.href = mobileUrl;
-
-          // Fallback to web URL if the app doesn't open after a short delay
           setTimeout(() => {
-            if (document.hidden) return; // Avoid fallback if app opened
+            if (document.hidden) return; 
             window.location.href = webUrl;
           }, 1000);
         } else {
-          // On desktop, open the web share dialog in a new window
           window.open(webUrl, '_blank');
         }
       });
