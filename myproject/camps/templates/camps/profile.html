@@ -25,9 +25,15 @@
                 <p><strong>ความสนใจ:</strong> {{ profile.interests|default:"ยังไม่ได้ระบุ" }}</p>
             </div>
             <div class="text-center">
-                <button id="edit-profile-btn" class="bg-indigo-600 text-white py-3 px-6 rounded-md hover:bg-indigo-700 transition-colors duration-300 text-lg">
+            <button id="edit-profile-btn"
+                class="mt-4 block w-full text-center text-white py-3 px-6 rounded-full transition-all duration-300 ease-in-out 
+                    bg-gradient-to-r from-yellow-500 via-orange-500 to-rose-500 
+                    hover:from-rose-500 hover:via-red-500 hover:to-yellow-400 
+                    shadow-md hover:shadow-lg transform hover:scale-105 text-lg">
                     แก้ไขข้อมูล
-                </button>
+            </button>
+
+
             </div>
             <p class="text-center text-sm text-gray-600 mt-4">
                 กลับไปหน้า <a href="{% url 'home' %}" class="text-indigo-600 hover:text-indigo-800">หน้าหลัก</a>
@@ -54,7 +60,13 @@
                                 <h4 class="text-lg font-semibold text-gray-800">{{ camp.title }}</h4>
                                 <p class="text-sm text-gray-600">หมวด: {{ camp.get_category_display }}</p>
                                 <p class="text-sm text-gray-600">ปิดรับสมัคร: {{ camp.application_deadline|date:"d/m/Y" }}</p>
-                                <a href="{% url 'camp_detail' camp.id %}" class="text-indigo-600 hover:text-indigo-800 text-sm">ดูรายละเอียด</a>
+                                <a href="{% url 'camp_detail' camp.id %}"
+                                class="mt-4 block w-full text-center text-white py-2 rounded-full transition-all duration-300 ease-in-out 
+                                        bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+                                        hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 
+                                        shadow-md hover:shadow-lg transform hover:scale-105">
+                            <i class="fas fa-info-circle mr-2"></i> รายละเอียดเพิ่มเติม
+                            </a>
                             </div>
                         {% endfor %}
                     </div>

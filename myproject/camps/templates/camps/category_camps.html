@@ -1,7 +1,7 @@
 {% extends 'camps/base.html' %}
 
 {% block content %}
-  <h2 class="text-3xl font-bold text-center mb-10 text-indigo-800 tracking-tight">
+  <h2 class="text-3xl font-bold text-center mb-10 text-white tracking-tight">
     🌟 ค่ายในหมวด {{ category_name }} 🌟
   </h2>
 
@@ -22,9 +22,13 @@
             <p><strong>ค่าใช้จ่าย:</strong> {{ camp.fee }}</p>
             <p><strong>ปิดรับสมัคร:</strong> {{ camp.application_deadline }}</p>
           </div>
-          <a href="{% url 'camp_detail' camp.id %}" class="mt-4 block w-full text-center bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">
-            รายละเอียดเพิ่มเติม
-          </a>
+          <a href="{% url 'camp_detail' camp.id %}"
+          class="mt-4 block w-full text-center text-white py-2 rounded-full transition-all duration-300 ease-in-out 
+                  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+                  hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 
+                  shadow-md hover:shadow-lg transform hover:scale-105">
+          <i class="fas fa-info-circle mr-2"></i> รายละเอียดเพิ่มเติม
+        </a>
         </div>
       </div>
     {% endfor %}

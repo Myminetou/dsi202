@@ -5,49 +5,84 @@
 <div id="particles-js" class="fixed inset-0 -z-10"></div>
 
   <div class="mt-16">
-    <h2 class="text-3xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-indigo-600 to-pink-500 text-transparent bg-clip-text tracking-tight mb-12 animate-fade-in">
-      Welcome to Peddle Camp<br><span class="text-xl md:text-2xl font-medium block mt-2">The Space where you discover YOURSELF</span>
-    </h2>
+  <h2 class="text-3xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-cyan-300 to-yellow-300 text-transparent bg-clip-text tracking-tight mb-12 animate-fade-in">
+    Welcome to Peddle Camp<br>
+    <span class="text-xl md:text-2xl font-medium block mt-2 text-white/90 drop-shadow-lg">
+      The Space where you discover YOURSELF
+    </span>
+  </h2>
+</div>
+
+<div class="relative overflow-hidden mb-20 animate-fade-in">
+  <div class="flex flex-col md:flex-row gap-8 items-center">
+    <div class="w-full md:w-1/2 flex flex-col items-center">
+
+  <!-- ครอบข้อความ + GIF ด้วย div -->
+  <div class="w-[100%] md:w-[80%]">
+
+    <!-- ข้อความ -->
+    <p class="text-cyan-200 leading-loose drop-shadow-md bg-black/30 rounded-lg px-4 py-2">
+      Peddle Camp คือสถานที่รวบรวมค่ายทุกประเภทให้ทุกคนสามารถมาค้นหาค่ายที่ตัวเองสนใจ ชื่นชอบ อีกทั้งโปรโมทค่ายได้อีกด้วย โดยพวกเรามองเห็นถึงปัญหาที่ว่า ค่ายอยู่อย่างกระจัดกระจายไม่รู้ว่ามีค่ายไหนที่ใกล้ปิดรับหรือเปิดรับอยู่บ้าง จึงได้เกิด Peddle Camp ขึ้นมา 
+    </p>
+    
+
+    <!-- GIF -->
+    <img src="https://media.giphy.com/media/zKbzfgqrvPzucTh5OX/giphy.gif" 
+        alt="Technology GIF" 
+        class="w-full aspect-video object-cover rounded-xl shadow-lg" />
   </div>
 
-<h2 class="text-white text-2xl font-bold text-center mb-8 text-red-600 ">
-   <span class="bg-gradient-to-r text-white text-transparent bg-clip-text">
-    ค่ายที่ใกล้ปิดรับสมัคร! รีบสมัครเลย!
-  </span>
-</h2>
-  <div class="relative overflow-hidden mb-20">
-  <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
-    {% for camp in close_soon_camps %}
-      <div class="w-full md:w-1/2 flex-shrink-0 px-2">
-        <a href="{% url 'camp_detail' camp.id %}" class="block bg-white border rounded-xl shadow-md hover:shadow-xl hover:scale-[1.015] transition-all duration-300 p-10 relative">
-          
-          <!-- ป้ายแสดง "อีกกี่วัน" -->
-          <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md shadow">
-            อีก {{ camp.days_left }} วัน
-          </div>          
+</div>
 
-          {% if camp.image %}
-            <img src="{{ camp.image.url }}" alt="{{ camp.title }}" class="w-full h-44 object-cover rounded-lg mb-3">
-          {% else %}
-            <img src="https://via.placeholder.com/300x160?text=No+Image" alt="No image" class="w-full h-44 object-cover rounded-lg mb-3">
-          {% endif %}
-          
-          <h3 class="font-semibold text-indigo-900 text-lg mb-1">{{ camp.title }}</h3>
-          <p class="text-sm text-gray-600 mb-1">{{ camp.description|truncatewords:15 }}</p>
-          <p class="text-sm text-gray-700"><strong>ปิดรับ:</strong> {{ camp.application_deadline }}</p>
-        </a>
+
+
+
+
+
+    <!-- ✅ ฝั่งขวา: ค่ายที่ใกล้ปิด -->
+    <div class="w-full md:w-1/2 relative">
+      <!-- หัวข้อ -->
+
+      <h2 class="text-2xl md:text-2xl font-extrabold text-center bg-gradient-to-r from-orange-400 via-pink-500 to-red-600 text-transparent bg-clip-text tracking-tight drop-shadow-lg mb-6">
+        ค่ายใกล้ปิดรับสมัคร! รับสมัครเลย!
+      </h2>
+
+
+
+
+      <!-- แสดงทีละ 1 ค่าย -->
+      <div id="carousel" class="w-full flex transition-transform duration-500 ease-in-out">
+        {% for camp in close_soon_camps %}
+          <div class="w-full flex-shrink-0 px-4">
+            <a href="{% url 'camp_detail' camp.id %}" class="block bg-white border rounded-xl shadow-md hover:shadow-xl hover:scale-[1.015] transition-all duration-300 p-5 relative">
+              
+              <!-- ป้ายแสดง "อีกกี่วัน" -->
+              <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md shadow">
+                อีก {{ camp.days_left }} วัน
+              </div>
+
+              {% if camp.image %}
+                <img src="{{ camp.image.url }}" alt="{{ camp.title }}" class="w-full h-44 object-cover rounded-lg mb-3">
+              {% else %}
+                <img src="https://via.placeholder.com/300x160?text=No+Image" alt="No image" class="w-full h-44 object-cover rounded-lg mb-3">
+              {% endif %}
+
+              <h3 class="font-semibold text-indigo-900 text-lg mb-1">{{ camp.title }}</h3>
+              <p class="text-sm text-gray-600 mb-1">{{ camp.description|truncatewords:15 }}</p>
+              <p class="text-sm text-gray-700"><strong>ปิดรับ:</strong> {{ camp.application_deadline }}</p>
+            </a>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
-  </div>
 
-    <!-- Navigation Buttons -->
-    <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 px-3 py-1 shadow rounded-full z-10 text-xl">
-      ‹
-    </button>
-    <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 px-3 py-1 shadow rounded-full z-10 text-xl">
-      ›
-    </button>
+      <!-- ปุ่มเลื่อน -->
+      <button onclick="prevSlide()" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 px-3 py-1 shadow rounded-full text-xl z-10">‹</button>
+      <button onclick="nextSlide()" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 px-3 py-1 shadow rounded-full text-xl z-10">›</button>
+
+    </div>
   </div>
+  </div>
+</div>
 
   <!-- Divider Section -->
 <div class="my-16 relative flex items-center justify-center">
@@ -56,33 +91,45 @@
 </div>
 
   {% for category_slug, category_info in camps_by_category.items %}
-    <div class="mb-10 border border-gray-200 rounded-xl shadow p-5 bg-white animate-fade-in">
+    <div class="mb-10 border border-gray-200 rounded-xl shadow p-5 animate-fade-in">
       <div class="flex items-center justify-between mb-4">
-        <h2 class="text-lg font-bold text-red-500">
+        <h2 class="text-lg font-bold text-white mb-1">
           {{ category_info.display_name }}
         </h2>
-        <a href="{% url 'category_camps' category_slug %}" class="text-sm text-indigo-600 hover:underline">
+        <a href="{% url 'category_camps' category_slug %}" class="text-white font-boldtext-sm hover:underline">
           ดูค่ายทั้งหมด →
         </a>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         {% for camp in category_info.camps %}
-        <a href="{% url 'camp_detail' camp.id %}" 
-        class="block bg-white border rounded-xl shadow-md hover:shadow-xl hover:scale-[1.015] transition-all duration-300 p-10 relative overflow-hidden">     
-            {% if camp.image %}
-              <img src="{{ camp.image.url }}" alt="{{ camp.title }}" class="w-full h-36 object-cover rounded mb-3">
-            {% else %}
-              <img src="https://via.placeholder.com/200" alt="Placeholder" class="w-full h-36 object-cover rounded mb-3">
-            {% endif %}
-            <h3 class="text-base font-semibold text-indigo-800 mb-1">{{ camp.title }}</h3>
-            <p class="text-gray-600 mb-1 text-sm">{{ camp.description|truncatewords:15 }}</p>
-            <p class="text-gray-700 text-sm">👥 ผู้เข้าร่วม: {{ camp.participants }}</p>
-            <p class="text-gray-700 text-sm">📍 สถานที่: {{ camp.location }}</p>
-            <p class="text-gray-700 text-sm">💰 ค่าใช้จ่าย: {{ camp.fee }}</p>
+          <a href="{% url 'camp_detail' camp.id %}" 
+            class="relative p-[2px] rounded-xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 hover:scale-[1.015] transition-all duration-300 shadow-md hover:shadow-xl">
+            
+            <div class="bg-white rounded-xl p-8 h-full overflow-hidden">
+              {% if camp.image %}
+                <img src="{{ camp.image.url }}" alt="{{ camp.title }}" class="w-full h-36 object-cover rounded mb-3">
+              {% else %}
+                <img src="https://via.placeholder.com/200" alt="Placeholder" class="w-full h-36 object-cover rounded mb-3">
+              {% endif %}
+              <h3 class="text-base font-semibold text-indigo-800 mb-1">{{ camp.title }}</h3>
+              <p class="text-gray-600 mb-1 text-sm">{{ camp.description|truncatewords:15 }}</p>
+              <p class="text-gray-700 text-sm">👥 ผู้เข้าร่วม: {{ camp.participants }}</p>
+              <p class="text-gray-700 text-sm">📍 สถานที่: {{ camp.location }}</p>
+              <p class="text-gray-700 text-sm">💰 ค่าใช้จ่าย: {{ camp.fee }}</p>
+              <p href="{% url 'camp_detail' camp.id %}"
+   class="mt-4 block w-full text-center text-white py-2 rounded-full transition-all duration-300 ease-in-out 
+          bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+          hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 
+          shadow-md hover:shadow-lg transform hover:scale-105">
+   <i class="fas fa-info-circle mr-2"></i> รายละเอียดเพิ่มเติม
+            </p>
+            </div>
+
           </a>
         {% endfor %}
       </div>
+
     </div>
   {% endfor %}
 
@@ -121,6 +168,7 @@
     const totalSlides = slides.length;
     const slidesPerPage = window.innerWidth >= 768 ? 2 : 1;
 
+  window.addEventListener('resize', updateCarousel);
     function updateSlide() {
       const slideWidth = slides[0].offsetWidth + 16;
       const newTransform = -currentIndex * slideWidth;
@@ -146,13 +194,13 @@
       updateSlide();
     });
     window.addEventListener('load', updateSlide);
-    
   </script>
   <!-- Particles.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 <!-- Net Config -->
 <script>
+  
   particlesJS("particles-js", {
     particles: {
       number: { value: 80, density: { enable: true, value_area: 800 } },
