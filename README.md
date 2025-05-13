@@ -55,11 +55,14 @@
 
 ## การติดตั้งและใช้งาน
 ### ความต้องการเบื้องต้น install Docker กับ install git
-1.ใช้คำสั่ง git clone https://github.com/Myminetou/dsi202_2025.git
+1.ใช้คำสั่ง 
+'''bash
+git clone https://github.com/Myminetou/dsi202_2025.git
 
 2.จากนั้น cd dsi202_2025
 
 3.เพิ่ม code นี้ไปใน setting.py โดยรหัสต่าง ๆ ต้องสร้างมาจาก https://console.cloud.google.com/ 
+'''bash
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": ["profile", "email"],
