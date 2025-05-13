@@ -55,6 +55,7 @@
 
 
 ## การติดตั้งและใช้งาน
+<<<<<<< HEAD
 ### ความต้องการเบื้องต้น install Docker กับ install git
 1.ใช้คำสั่ง git clone https://github.com/Myminetou/dsi202_2025.git
 2.จากนั้น cd dsi202_2025
@@ -73,3 +74,10 @@ SOCIALACCOUNT_PROVIDERS = {
 4.เปิด bash จากนั้นพิมพ์ว่า docker compose build
 5.ตามด้วยคำสั่ง docker compose up
 6.เปิด http://localhost:8000/ ใน browser
+=======
+1.ใช้คำสั่ง git clone https://github.com/Myminetou/dsi202_2025.git
+2.จากนั้น cd dsi202_2025 และ cd myproject
+3.เปิด bash จากนั้นพิมพ์ว่า docker compose build
+4.ตามด้วยคำสั่ง docker compose up
+5.เปิด http://localhost:8000/ ใน browser
+>>>>>>> b32f4addcaceaed2fa66de0ff7d34346e9dda56f
