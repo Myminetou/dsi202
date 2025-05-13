@@ -56,7 +56,9 @@
 
 ### ความต้องการเบื้องต้น install Docker กับ install git
 1.ใช้คำสั่ง git clone https://github.com/Myminetou/dsi202_2025.git
+
 2.จากนั้น cd dsi202_2025
+
 3.เพิ่ม code นี้ไปใน setting.py โดยรหัสต่าง ๆ ต้องสร้างมาจาก https://console.cloud.google.com/ 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
@@ -69,6 +71,9 @@ SOCIALACCOUNT_PROVIDERS = {
         },
     }
 }
+
 4.เปิด bash จากนั้นพิมพ์ว่า docker compose build
+
 5.ตามด้วยคำสั่ง docker compose up
+
 6.เปิด http://localhost:8000/ ใน browser
