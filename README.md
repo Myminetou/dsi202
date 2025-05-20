@@ -3,7 +3,7 @@
 รหัสนักศึกษา: 6624650054  
 ชั้นปีที่ 2 วิทยาลัยสหวิทยาการ สาขาวิทยาศาสตร์และนวัตกรรมข้อมูล
 
-Video : https://youtu.be/yRkcmF4XSyc?feature=shared
+Video :
 
 Github : https://github.com/Myminetou/dsi202_2025.git
 
