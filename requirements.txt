@@ -6,3 +6,5 @@ PyJWT>=2.0.0
 cryptography>=3.3.2
 django-widget-tweaks
 django-environ==0.8.1
+python-decouple
+
