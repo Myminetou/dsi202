@@ -87,35 +87,18 @@ Github : https://github.com/Myminetou/dsi202_2025.git
     cd dsi202_2025
     ```
 
-2. **เพิ่ม Code นี้ลงใน `settings.py`**  
-   (ใช้ `Client ID` และ `Secret` จาก [Google Cloud Console](https://console.cloud.google.com/)):
-
-    ```python
-    SOCIALACCOUNT_PROVIDERS = {
-        "google": {
-            "SCOPE": ["profile", "email"],
-            "AUTH_PARAMS": {"access_type": "online"},
-            "APP": {
-                "client_id": "Client ID ที่สร้างขึ้นมา",
-                "secret": "Client secret ที่สร้างขึ้นมา",
-                "key": "",
-            },
-        }
-    }
-    ```
-
-3. **Build Docker container:**
+2. **Build Docker container:**
 
     ```bash
     docker compose build
     ```
 
-4. **รัน Web Application:**
+3. **รัน Web Application:**
 
     ```bash
     docker compose up
     ```
 
-5. **เปิด Browser ที่:**  
+4. **เปิด Browser ที่:**  
    [http://localhost:8000/](http://localhost:8000/)
 
